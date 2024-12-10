@@ -1,0 +1,590 @@
+/* Estilos generales */
+body, html {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%; 
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden; 
+    background-size: cover; 
+}
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    z-index: 1;
+}
+
+/* Contenedor de bienvenida */
+.welcomeSection {
+    position: static;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    text-align: center;
+    z-index: 1;
+    font-size: 150px;
+    animation: fadeIn 2s ease-out;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.welcomeSection h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 5rem;
+    line-height: 1.2;
+}
+
+.welcomeSection .welcomeText {
+    margin: 0;
+    font-size: 10rem;
+    font-weight: bold;
+}
+
+button {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.188);
+    padding: 0.7em 1.7em;
+    font-size: 18px;
+    border-radius: 50em;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    animation: buttonGlow 1s infinite ease-in-out;
+}
+
+button:hover {
+    background: rgba(104, 104, 104, 0.188);
+    transform: translateX(-50%) scale(4.05);
+    box-shadow: 6px 6px 12px #4769ff, -6px -6px 12px #6cb6ff,
+    animation: buttonGlowHover 0.5ms infinite ease-in-out;
+}
+
+@keyframes buttonGlowUnified {
+    0%, 100% {
+      box-shadow: 6px 6px 12px #68b1ff, -6px -6px 12px #7b6cff,
+                  0 0 20px rgba(255, 255, 255, 0.4),
+                  0 0 40px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+      box-shadow: 6px 6px 12px #4769ff, -6px -6px 12px #6cb6ff,
+                  0 0 50px rgba(255, 255, 255, 0.6),
+                  0 0 80px rgba(0, 0, 0, 0.3);
+    }
+  }
+  
+  button {
+    animation: buttonGlowUnified 3s infinite ease-in-out;
+  }
+  button:hover {
+    transform: translateX(-50%) scale(1.05);
+    animation-duration: 1.5s; /* Adjust timing dynamically */
+  }
+
+.contentSection {
+    position: relative;
+    width: 100%;
+    min-height: 100vh; 
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    z-index: 1;
+    font-size: 50px;
+    background: transparent;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none;
+    padding-top: 100px;
+    margin-top: 5vh;
+}
+
+.contentSection.visible {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 1;
+}
+
+.profile-image {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin-bottom: 2rem;
+    z-index: 1;
+}
+
+.content-text {
+    padding: 0 2rem;
+}
+
+.content-text h1 {
+    margin-bottom: 1rem;
+}
+
+.content-text p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+}
+
+/* Glass Header Styles */
+.glass-header {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-150px);
+    width: 80%;
+    max-width: 800px;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.188);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 0.5rem 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: all 0.5s ease-out;
+    z-index: 2;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    z-index: 1;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+:root {
+  --primary-color: #ffffff;
+  --secondary-color: #656565;
+  --text-color: #ffffff;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --transition-standard: all 0.3s ease;
+}
+
+.nav-links a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: var(--transition-standard);
+  padding: 0.5rem 1rem;
+  position: relative;
+  user-select: none;
+}
+
+.nav-links a:active {
+  transform: scale(0.95);
+}
+
+.nav-links a[href="#projects"] {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-links a[href="#projects"]::before {
+  content: 'projects';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0;
+  pointer-events: none;
+  transition: none;
+}
+
+.nav-links a[href="#projects"]:active::before {
+  animation: rippleEffect 0.6s ease-in;
+}
+
+@keyframes rippleEffect {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #ff8060;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.content-container {
+    position: relative;
+    width: 100%;
+    height: 93vh;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease-out;
+    transition-delay: 0.2s;
+    padding-top: 120px;
+}
+
+.contentSection.visible .glass-header {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.contentSection.visible .content-container {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Projects Section */
+.projectsSection {
+    padding: 4rem 2rem;
+    min-height: 100vh;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.contentSection.visible .projectsSection {
+    opacity: 1;
+    transform: translateY(0);
+    z-index: 1;
+}
+
+.section-title {
+    text-align: center;
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-card {
+    background: rgba(0, 0, 0, 0.188);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+}
+
+.project-content {
+    padding: 1.2rem;
+}
+
+.project-content h3 {
+    color: white;
+    margin: 0 0 1rem 0;
+    font-size: 1.3rem;
+}
+
+.project-content p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tag {
+    background: rgba(0, 0, 0, 0.188);
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.project-link {
+    color: white;
+    text-decoration: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    transform: transform 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.project-link:hover {
+    background: rgba(0, 0, 0, 0.188);
+}
+
+/* Project Modal Styles */
+.project-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.project-modal.active {
+    display: flex;
+}
+
+.modal-content {
+    width: 90%;
+    max-width: 1200px;
+    height: 90vh;
+    background: rgba(0, 0, 0, 0.188);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    position: relative;
+    overflow-y: auto;
+    color: white;
+    padding: 2rem;
+}
+
+.back-arrow {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.188);
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.back-arrow:hover {
+    background: rgba(104, 104, 104, 0.188);
+}
+
+/* Carousel Styles */
+.carousel-container {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    height: 100%;
+}
+
+.carousel-track img {
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Arrow Navigation */
+.carousel-nav {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.carousel-prev {
+    position: absolute;
+    top: 10px; /* Adjust to move the return arrow to the top-left */
+    left: 20px;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.carousel-next {
+    position: absolute;
+    bottom: -40px; /* Position the forward arrow below the carousel */
+    right: 20px;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.carousel-prev,
+.carousel-next {
+    background: rgba(0, 0, 0, 0.188);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+    background: rgba(104, 104, 104, 0.188);
+}
+
+/* Modal Styles */
+#projectModal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+}
+
+#projectModal.active {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.modal-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.modal-description {
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    margin: 1rem 2rem;
+}
+
+/* General Fixes */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.carousel-container img {
+    max-height: 100%;
+    max-width: 100%;
+    display: block;
+}
+
+/* Custom Scrollbar for Modal */
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}

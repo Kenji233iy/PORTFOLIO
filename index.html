@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adri's Portfolio</title>
+
+    <!-- Enlace a Google Fonts para Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Contenedor de bienvenida -->
+    <div class="welcomeSection" id="home">
+        <h3>Welcome to</h3>
+        <h3>Adri's</h3>
+        <h1 class="welcomeText">PORTFOLIO</h1>
+        <button onclick="toggleContent()">Start here</button>
+    </div>
+    <video autoplay muted loop class="video-background">
+        <source src="Assets/Intro.mp4" type="video/mp4">
+    </video>
+
+    <div class="contentSection" id="contentSection">
+        <header class="glass-header">
+            <nav>
+                <div class="logo">Adri</div>
+                <ul class="nav-links">
+                    <li><a href="#home" onclick="goHome(event)">Home</a></li>
+                    <li><a href="#about" onclick="goToAbout(event)">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="content-container" id="about">
+            <img src="Assets/Drake is hello kitty.jpg" alt="Profile picture" class="profile-image">
+            <div class="content-text">
+                <h1>About me</h1>
+                <p>This is the content section.</p>
+            </div>
+        </div>
+
+        <div class="projectsSection" id="projects">
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="Assets/project1.jpg" alt="Project 1">
+                    </div>
+                    <div class="project-content">
+                        <h3>Project Title</h3>
+                        <p>Project description goes here. Brief explanation of what the project does and technologies used.</p>
+                        <div class="project-tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" onclick="openProjectModal(event, 'project1')">View Project</a>
+                            <a href="#" class="project-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="Assets/project2.jpg" alt="Project 2">
+                    </div>
+                    <div class="project-content">
+                        <h3>Project Title</h3>
+                        <p>Project description goes here. Brief explanation of what the project does and technologies used.</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" onclick="openProjectModal(event, 'project2')">View Project</a>
+                            <a href="#" class="project-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="Assets/project3.jpg" alt="Project 3">
+                    </div>
+                    <div class="project-content">
+                        <h3>Project Title</h3>
+                        <p>Project description goes here. Brief explanation of what the project does and technologies used.</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Django</span>
+                            <span class="tag">PostgreSQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" onclick="openProjectModal(event, 'project3')">View Project</a>
+                            <a href="#" class="project-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Modal -->
+    <div class="project-modal" id="projectModal">
+        <div class="modal-content">
+            <button class="back-arrow" onclick="closeProjectModal()">←</button>
+            
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <!-- Images will be added dynamically -->
+                </div>
+                <div class="carousel-nav">
+                    <button class="carousel-prev">←</button>
+                    <button class="carousel-next">→</button>
+                </div>
+            </div>
+            
+            <div class="project-details">
+                <h2 class="modal-title"></h2>
+                <div class="modal-description"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Control scroll behavior
+        document.addEventListener('DOMContentLoaded', function() {
+            const content = document.getElementById('contentSection');
+            
+            function toggleScroll(enable) {
+                document.body.style.overflow = enable ? 'auto' : 'hidden';
+            }
+            
+            // Initially disable scroll
+            toggleScroll(false);
+            
+            // Enable scroll when content is visible
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.target.classList.contains('visible')) {
+                        toggleScroll(true);
+                    } else {
+                        toggleScroll(false);
+                    }
+                });
+            });
+            
+            observer.observe(content, { attributes: true });
+        });
+
+        function toggleContent() {
+            const content = document.getElementById('contentSection');
+            const button = document.querySelector('.welcomeSection button');
+            
+            if (!content.classList.contains('visible')) {
+                content.style.display = 'flex';
+                content.offsetHeight;
+                content.classList.add('visible');
+                button.style.opacity = '0';
+                button.style.pointerEvents = 'none';
+                setTimeout(() => {
+                    button.style.display = 'none';
+                }, 500);
+                content.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        function goHome(event) {
+            event.preventDefault();
+            const content = document.getElementById('contentSection');
+            const button = document.querySelector('.welcomeSection button');
+            
+            if (content.classList.contains('visible')) {
+                content.classList.remove('visible');
+                // Show the button again
+                button.style.display = 'block';
+                setTimeout(() => {
+                    button.style.opacity = '1';
+                    button.style.pointerEvents = 'auto';
+                }, 50);
+                
+                setTimeout(() => {
+                    content.style.display = 'none';
+                    document.getElementById('home').scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 500);
+            }
+        }
+
+        function goToAbout(event) {
+            event.preventDefault();
+            const content = document.getElementById('contentSection');
+            if (!content.classList.contains('visible')) {
+                content.style.display = 'flex';
+                content.offsetHeight;
+                content.classList.add('visible');
+            }
+            setTimeout(() => {
+                document.getElementById('about').scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 100);
+        }
+
+        // Project data
+        const projectData = {
+            project1: {
+                title: "Project 1",
+                description: "Detailed description of project 1. This can include multiple paragraphs explaining the project's purpose, technologies used, and challenges overcome.",
+                images: [
+                    "Assets/project1.jpg",
+                    "Assets/project1-2.jpg",
+                    "Assets/project1-3.jpg"
+                ]
+            },
+            project2: {
+                title: "Project 2",
+                description: "Detailed description of project 2. Here you can explain the technical aspects, your role, and the impact of the project.",
+                images: [
+                    "Assets/project2.jpg",
+                    "Assets/project2-2.jpg",
+                    "Assets/project2-3.jpg"
+                ]
+            },
+            project3: {
+                title: "Project 3",
+                description: "Comprehensive overview of project 3. Discuss the problem it solves, the solution you implemented, and the results achieved.",
+                images: [
+                    "Assets/project3.jpg",
+                    "Assets/project3-2.jpg",
+                    "Assets/project3-3.jpg"
+                ]
+            }
+        };
+
+        let currentSlide = 0;
+        let currentProject = null;
+
+        function openProjectModal(event, projectId) {
+            event.preventDefault();
+            const modal = document.getElementById('projectModal');
+            const project = projectData[projectId];
+            currentProject = projectId;
+            currentSlide = 0;
+
+            // Set project content
+            modal.querySelector('.modal-title').textContent = project.title;
+            modal.querySelector('.modal-description').textContent = project.description;
+
+            // Set up carousel
+            const track = modal.querySelector('.carousel-track');
+            track.innerHTML = '';
+            project.images.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                track.appendChild(img);
+            });
+            updateCarousel();
+
+            // Show modal
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProjectModal() {
+            const modal = document.getElementById('projectModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            currentProject = null;
+        }
+
+        function updateCarousel() {
+            const track = document.querySelector('.carousel-track');
+            const slideWidth = track.clientWidth;
+            track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+        }
+
+        // Add event listeners for carousel navigation
+        document.querySelector('.carousel-prev').addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateCarousel();
+            }
+        });
+
+        document.querySelector('.carousel-next').addEventListener('click', () => {
+            const project = projectData[currentProject];
+            if (currentSlide < project.images.length - 1) {
+                currentSlide++;
+                updateCarousel();
+            }
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('projectModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                closeProjectModal();
+            }
+        });
+
+        // Update carousel on window resize
+        window.addEventListener('resize', () => {
+            if (currentProject) {
+                updateCarousel();
+            }
+        });
+    </script>
+</body>
+</html>
