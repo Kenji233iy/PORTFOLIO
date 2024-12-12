@@ -15,16 +15,20 @@
         <h3>Welcome to</h3>
         <h3>Adri's</h3>
         <h1 class="welcomeText">PORTFOLIO</h1>
-        <button onclick="toggleContent()">Start here</button>
+        <button onclick="toggleContent()">Start here</button> 
     </div>
     <video autoplay muted loop class="video-background">
-        <source src="Assets/Intro.mp4" type="video/mp4">
+        <source src="Assets/Comp 1.mov" type="video/mp4">
     </video>
+
+    <audio autoplay id="audio-background">
+        <source src="/Assets/Mi Audio.mp3" type="audio/mp3">
+    </audio>
 
     <div class="contentSection" id="contentSection">
         <header class="glass-header">
             <nav>
-                <div class="logo">Adri</div>
+                <div class="logo">Adri's Portfolio</div>
                 <ul class="nav-links">
                     <li><a href="#home" onclick="goHome(event)">Home</a></li>
                     <li><a href="#about" onclick="goToAbout(event)">About</a></li>
@@ -43,7 +47,7 @@
         </div>
 
         <div class="projectsSection" id="projects">
-            <h2 class="section-title">My Projects</h2>
+            <h2 class="section-title">My Projects</h2> <!--cambiar titulo-->
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
@@ -59,7 +63,7 @@
                         </div>
                         <div class="project-links">
                             <a href="#" class="project-link" onclick="openProjectModal(event, 'project1')">View Project</a>
-                            <a href="#" class="project-link">GitHub</a>
+                            <a href="#" class="project-link">Instagram</a>
                         </div>
                     </div>
                 </div>
@@ -78,7 +82,7 @@
                         </div>
                         <div class="project-links">
                             <a href="#" class="project-link" onclick="openProjectModal(event, 'project2')">View Project</a>
-                            <a href="#" class="project-link">GitHub</a>
+                            <a href="#" class="project-link">Instagram</a>
                         </div>
                     </div>
                 </div>
@@ -97,26 +101,61 @@
                         </div>
                         <div class="project-links">
                             <a href="#" class="project-link" onclick="openProjectModal(event, 'project3')">View Project</a>
-                            <a href="#" class="project-link">GitHub</a>
+                            <a href="#" class="project-link">Instagram</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Contact Form Section -->
+        <section id="contact">
+            <div class="contact-box">
+                <h2>Contact Us</h2>
+                <form id="contactForm" action="submit_form.php" method="post">
+                    <div>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div>
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <div>
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer with QR Code Section -->
+        <footer>
+            <div class="qr-container">
+                <h2>Scan the QR Code to visit this site:</h2>
+                <div id="qrcode"></div>
+            </div>
+        </footer>
     </div>
 
     <!-- Project Modal -->
     <div class="project-modal" id="projectModal">
         <div class="modal-content">
-            <button class="back-arrow" onclick="closeProjectModal()">←</button>
-            
+            <button class="back-arrow" onclick="closeProjectModal()">✖</button>
             <div class="carousel-container">
                 <div class="carousel-track">
                     <!-- Images will be added dynamically -->
                 </div>
                 <div class="carousel-nav">
-                    <button class="carousel-prev">←</button>
-                    <button class="carousel-next">→</button>
+                    <button class="carousel-prev">
+                        <img src="Assets/prev.png" class="image/png">
+                    </button>
+                    <button class="carousel-next">
+                        <img src="Assets/next.png" class="image/png">
+                    </button>
                 </div>
             </div>
             
@@ -314,6 +353,25 @@
             if (currentProject) {
                 updateCarousel();
             }
+        });
+    </script>
+
+    <!-- Include QR Code library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <!-- QR Code Section -->
+    <div id="qrCodeContainer" style="text-align: center; margin-top: 20px;">
+        <div id="qrcode" style="margin: 0 auto;"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const url = "https://mvmhtnns-5500.uks1.devtunnels.ms/";
+            const qrCode = new QRCode(document.getElementById("qrcode"), {
+                text: url,
+                width: 150,
+                height: 150,
+            });
         });
     </script>
 </body>
