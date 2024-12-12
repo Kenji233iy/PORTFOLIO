@@ -8,16 +8,11 @@ body, html {
     font-family: 'Montserrat', sans-serif;
     overflow-x: hidden; 
     background-size: cover; 
+    background: linear-gradient(143deg, #143920, #3D5F49); /* New gradient background */
 }
 
 .video-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-    z-index: -1;
+    display: none;
 }
 body {
     margin: 0;
@@ -69,7 +64,7 @@ button {
     background: rgba(0, 0, 0, 0.188);
     padding: 0.7em 1.7em;
     font-size: 18px;
-    color: #ffffff;;
+    color: #ffffff;
     border-radius: 50em;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
@@ -80,29 +75,8 @@ button {
 button:hover {
     background: rgba(104, 104, 104, 0.188);
     transform: translateX(-50%) scale(4.05);
-    box-shadow: 6px 6px 12px #4769ff, -6px -6px 12px #6cb6ff,
+    box-shadow: 6px 6px 12px #4769ff, -6px -6px 12px #6cb6ff;
 }
-
-@keyframes buttonGlowUnified {
-    0%, 100% {
-      box-shadow: 6px 6px 12px #68b1ff, -6px -6px 12px #7b6cff,
-                  0 0 20px rgba(255, 255, 255, 0.4),
-                  0 0 40px rgba(0, 0, 0, 0.2);
-    }
-    50% {
-      box-shadow: 6px 6px 12px #4769ff, -6px -6px 12px #6cb6ff,
-                  0 0 50px rgba(255, 255, 255, 0.6),
-                  0 0 80px rgba(0, 0, 0, 0.3);
-    }
-  }
-  
-  button {
-    animation: buttonGlowUnified 3s infinite ease-in-out;
-  }
-  button:hover {
-    transform: translateX(-50%) scale(1.05);
-    animation-duration: 1.5s; /* Adjust timing dynamically */
-  }
 
 .contentSection {
     position: relative;
@@ -133,6 +107,7 @@ button:hover {
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border: 3px solid rgba(255, 255, 255, 0.471);
     margin-bottom: 2rem;
     z-index: 1;
 }
@@ -163,6 +138,7 @@ button:hover {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.471);
     padding: 0.5rem 2rem;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     opacity: 0;
@@ -334,7 +310,7 @@ nav {
     -webkit-backdrop-filter: blur(10px);
     border-radius: 20px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 3px solid rgba(255, 255, 255, 0.471);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     max-width: 350px;
     margin: 0 auto;
@@ -421,7 +397,7 @@ nav {
     width: 100%;
     height: 100%;
     backdrop-filter: blur(10px);
-    webkit-backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     display: none;
     justify-content: center;
     align-items: center;
@@ -436,7 +412,7 @@ nav {
 .modal-content {
     width: 90%;
     max-width: 1200px;
-    height: 90vh;
+    height: auto;
     background: rgba(0, 0, 0, 0.424);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -561,7 +537,7 @@ nav {
 
 .modal-description {
     line-height: 1.6;
-    color: rgba(86, 86, 86, 0.537);
+    color: rgba(255, 255, 255, 0.537);
     text-align: center;
     margin: 1rem 2rem;
 }
@@ -613,14 +589,15 @@ body {
 #contactForm label {
     display: block;
     margin-bottom: 5px;
-    font-weight: bold;
+    font-weight: normal;
+    font-size: auto; /* Smaller label */
 }
 
 #contactForm input, #contactForm textarea {
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
-    border: 1px solid #ffffff;
+    border: 1px solid #474747;
     border-radius: 4px;
 }
 
@@ -647,7 +624,7 @@ body {
 #contact h2 {
     position: absolute;
     top: -80px;
-    left: 40%;
+    left: 33%;
     transform: translateY(-90%);
     padding: 10px 20px;
     border-radius: 8px;
@@ -685,9 +662,10 @@ body {
 /* Footer Styles */
 footer {
     background-color: rgba(0, 0, 0, 0.8);
+    text-size-adjust: auto;
     color: white;
     padding: 20px 0;
-    text-align: center;
+    text-align: left;
     position: relative;
     bottom: 0;
     width: 100%;
@@ -695,8 +673,8 @@ footer {
 
 footer .qr-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: last baseline;
     flex-direction: column;
 }
 
@@ -708,7 +686,7 @@ footer .qr-container h2 {
 footer .qr-container img {
     width: 150px;
     height: 150px;
-    border: 2px solid white;
+    border: 2px solid rgb(255, 255, 255);
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
