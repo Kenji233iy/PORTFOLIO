@@ -15,12 +15,8 @@
         <h3>Welcome to</h3>
         <h3>Adri's</h3>
         <h1 class="welcomeText">PORTFOLIO</h1>
-        <button onclick="toggleContent()">Start here</button> 
+        <button id="startButton" onclick="startPortfolio()">Start Here</button>
     </div>
-    <video autoplay muted loop class="video-background">
-        <source src="Assets/Comp 1.mov" type="video/mp4">
-    </video>
-
     <audio autoplay id="audio-background">
         <source src="/Assets/Mi Audio.mp3" type="audio/mp3">
     </audio>
@@ -32,7 +28,7 @@
                 <ul class="nav-links">
                     <li><a href="#home" onclick="goHome(event)">Home</a></li>
                     <li><a href="#about" onclick="goToAbout(event)">About</a></li>
-                    <li><a href="#CV" onclick="goToCV(event)">CV</a></li>
+                    <li><a href="cv.html">CV</a></li>
                     <li><a href="#projects" onclick="goToProjects(event)">Projects</a></li>
                     <li><a href="#contact"onclick="goToContact(event)">Contact</a></li>
                     <li><a href="#CV" onclick="goToCV(event)"></a></li>
@@ -47,68 +43,87 @@
                 <p>This is the content section.</p>
             </div>
         </div>
-
-        <div class="projectsSection" id="projects">
-            <h2 class="section-title">My Projects</h2> <!--cambiar titulo-->
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="Assets/project1.jpg" alt="Project 1">
-                    </div>
-                    <div class="project-content">
-                        <h3>Project Title</h3>
-                        <p>Project description goes here. Brief explanation of what the project does and technologies used.</p>
-                        <div class="project-tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link" onclick="openProjectModal(event, 'project1')">View Project</a>
-                            <a href="#" class="project-link">Instagram</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="Assets/project2.jpg" alt="Project 2">
-                    </div>
-                    <div class="project-content">
-                        <h3>Project Title</h3>
-                        <p>Project description goes here. Brief explanation of what the project does and technologies used.</p>
-                        <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">MongoDB</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link" onclick="openProjectModal(event, 'project2')">View Project</a>
-                            <a href="#" class="project-link">Instagram</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="Assets/project3.jpg" alt="Project 3">
-                    </div>
-                    <div class="project-content">
-                        <h3>Project Title</h3>
-                        <p>Project description goes here. Brief explanation of what the project does and technologies used.</p>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Django</span>
-                            <span class="tag">PostgreSQL</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link" onclick="openProjectModal(event, 'project3')">View Project</a>
-                            <a href="#" class="project-link">Instagram</a>
-                        </div>
-                    </div>
-                </div>
+<!--Project secction-->
+    <div class="projectsSection" id="projects">
+        <h2 class="section-title">My Projects</h2> 
+        <div class="projects-grid">
+        <div class="project-card">
+            <div class="project-image">
+            <img src="Assets/project1.jpg" alt="Project 1">
+            </div>
+            <div class="project-content">
+            <h3>Project Title</h3>
+            <p>Project description goes here. Brief explanation of what the project does and technologies used.</p>
+            <div class="project-tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+            </div>
+            <div class="project-links">
+                <a href="#" class="project-link" onclick="openProjectModal(event, 'project1')">View Project</a>
+                <a href="#" class="project-link">Instagram</a>
+            </div>
             </div>
         </div>
+
+        <div class="project-card">
+            <div class="project-image">
+            <img src="Assets/project2.jpg" alt="Project 2">
+            </div>
+            <div class="project-content">
+            <h3>Project Title</h3>
+            <p>Project description goes here. Brief explanation of what the project does and technologies used.</p>
+            <div class="project-tags">
+                <span class="tag">React</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">MongoDB</span>
+            </div>
+            <div class="project-links">
+                <a href="#" class="project-link" onclick="openProjectModal(event, 'project2')">View Project</a>
+                <a href="#" class="project-link">Instagram</a>
+            </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-image">
+            <img src="Assets/project3.jpg" alt="Project 3">
+            </div>
+            <div class="project-content">
+            <h3>Project Title</h3>
+            <p>Project description goes here. Brief explanation of what the project does and technologies used.</p>
+            <div class="project-tags">
+                <span class="tag">Python</span>
+                <span class="tag">Django</span>
+                <span class="tag">PostgreSQL</span>
+            </div>
+            <div class="project-links">
+                <a href="#" class="project-link" onclick="openProjectModal(event, 'project3')">View Project</a>
+                <a href="#" class="project-link">Instagram</a>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+<style>
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+}
+
+@media (max-width: 890px) {
+    .projects-grid {
+    grid-template-columns: 1fr;
+    }
+
+    .project-card {
+    margin-bottom: 2rem;
+    }
+}
+</style>
 
         <!-- Contact Form Section -->
         <section id="contact">
@@ -172,60 +187,86 @@
         // Control scroll behavior
         document.addEventListener('DOMContentLoaded', function() {
             const content = document.getElementById('contentSection');
-            
-            function toggleScroll(enable) {
-                document.body.style.overflow = enable ? 'auto' : 'hidden';
+            const fadeToBlack = document.getElementById('fadeToBlack');
+            const fullscreenVideo = document.getElementById('fullscreenVideo');
+            const introVideo = document.getElementById('introVideo');
+
+            function toggleContent() {
+                if (!content.classList.contains('visible')) {
+                    content.style.display = 'flex';
+                    content.offsetHeight;
+                    content.classList.add('visible');
+                    fadeToBlack.style.opacity = '1';
+                    fadeToBlack.style.pointerEvents = 'auto';
+                    setTimeout(() => {
+                        fullscreenVideo.style.display = 'block';
+                        introVideo.play();
+                        fadeToBlack.style.opacity = '0';
+                        fadeToBlack.style.pointerEvents = 'none';
+                    }, 2000);
+                    introVideo.onended = () => {
+                        fullscreenVideo.style.display = 'none';
+                        document.getElementById('about').scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    };
+                }
             }
-            
-            // Initially disable scroll
-            toggleScroll(false);
-            
-            // Enable scroll when content is visible
-            const observer = new MutationObserver(function(mutations) {
-                mutations.forEach(function(mutation) {
-                    if (mutation.target.classList.contains('visible')) {
-                        toggleScroll(true);
-                    } else {
-                        toggleScroll(false);
-                    }
-                });
+
+            // Call toggleContent on scroll
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 0) {
+                    toggleContent();
+                    window.removeEventListener('scroll', arguments.callee);
+                }
             });
-            
-            observer.observe(content, { attributes: true });
+
+            // ...existing code...
         });
 
-        function toggleContent() {
+        function startPortfolio() {
             const content = document.getElementById('contentSection');
-            const button = document.querySelector('.welcomeSection button');
-            
+            const fadeToBlack = document.getElementById('fadeToBlack');
+            const fullscreenVideo = document.getElementById('fullscreenVideo');
+            const introVideo = document.getElementById('introVideo');
+            const startButton = document.getElementById('startButton');
+
             if (!content.classList.contains('visible')) {
+                startButton.style.display = 'none';
                 content.style.display = 'flex';
                 content.offsetHeight;
                 content.classList.add('visible');
-                button.style.opacity = '0';
-                button.style.pointerEvents = 'none';
+                fadeToBlack.style.opacity = '1';
+                fadeToBlack.style.pointerEvents = 'auto';
                 setTimeout(() => {
-                    button.style.display = 'none';
-                }, 500);
-                content.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                    fullscreenVideo.style.display = 'block';
+                    introVideo.play();
+                    fadeToBlack.style.opacity = '0';
+                    fadeToBlack.style.pointerEvents = 'none';
+                }, 2000);
+                introVideo.onended = () => {
+                    fullscreenVideo.style.display = 'none';
+                    document.getElementById('about').scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                };
             }
         }
 
         function goHome(event) {
             event.preventDefault();
             const content = document.getElementById('contentSection');
-            const button = document.querySelector('.welcomeSection button');
+            const startButton = document.getElementById('startButton');
             
             if (content.classList.contains('visible')) {
                 content.classList.remove('visible');
                 // Show the button again
-                button.style.display = 'block';
+                startButton.style.display = 'block';
                 setTimeout(() => {
-                    button.style.opacity = '1';
-                    button.style.pointerEvents = 'auto';
+                    startButton.style.opacity = '1';
+                    startButton.style.pointerEvents = 'auto';
                 }, 50);
                 
                 setTimeout(() => {
@@ -241,6 +282,8 @@
         function goToAbout(event) {
             event.preventDefault();
             const content = document.getElementById('contentSection');
+            const startButton = document.getElementById('startButton');
+            startButton.style.display = 'none';
             if (!content.classList.contains('visible')) {
                 content.style.display = 'flex';
                 content.offsetHeight;
@@ -406,7 +449,7 @@
     </script>
 
     <!-- Include QR Code library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script> 
 
     <!-- QR Code Section -->
     <div id="qrCodeContainer" style="text-align: center; margin-top: 20px;">
